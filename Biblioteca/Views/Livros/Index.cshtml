@@ -1,4 +1,38 @@
-﻿
+﻿@model IEnumerable<LivrosModel>
 @{
     ViewData["Title"] = "Estante de livros";
 }
+<h1>@ViewData["Title"]</h1>
+
+<div class="">
+    <a class="btn btn-primary m-5" role="button" asp-controller="Livros" asp-action="Criar">Criar um Livro</a>
+</div>
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Numero de Paginas</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Sinopse</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model != null)
+        {
+            @foreach (var livros in Model)
+            {
+                <tr>
+                    <td>@livros.Nome</td>
+                    <td>@livros.NumeroDePaginas</td>
+                    <td>@livros.Autor</td>
+                    <td>@livros.Sinopse</td>
+                    <td>@livros.Status</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

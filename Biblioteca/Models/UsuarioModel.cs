@@ -16,7 +16,5 @@ namespace Biblioteca.Models
         public string Telefone { get; set; }
         [Required(ErrorMessage = "Digite o e-mail")]
         public string Email { get; set; }
-
-        public List<LivrosModel> IdLivros { get; set; }
     }
 }

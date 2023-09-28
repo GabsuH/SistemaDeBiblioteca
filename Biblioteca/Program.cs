@@ -14,7 +14,7 @@ namespace Biblioteca
             builder.Services.AddDbContext<BancoContext>(options => options.UseSqlServer("server=localhost;Database=DB_Biblioteca;uid=sa;pwd=123456;Integrated Security=SSPI;TrustServerCertificate=True"));
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ILivrosRepositorio, LivrosRepositorio>();
-
+            builder.Services.AddScoped<ILivrosPorUsuarioRepositorio, LivrosPorUsuarioRepositorio>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

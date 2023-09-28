@@ -48,14 +48,36 @@ namespace Biblioteca.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioModelId")
+                    b.HasKey("Id");
+
+                    b.ToTable("Livros");
+                });
+
+            modelBuilder.Entity("Biblioteca.Models.LivrosPorUsuarioModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("LivroId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LivroNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsuarioNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsuarioModelId");
-
-                    b.ToTable("Livros");
+                    b.ToTable("LivrosPorUsuario");
                 });
 
             modelBuilder.Entity("Biblioteca.Models.UsuarioModel", b =>
@@ -87,18 +109,6 @@ namespace Biblioteca.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("Biblioteca.Models.LivrosModel", b =>
-                {
-                    b.HasOne("Biblioteca.Models.UsuarioModel", null)
-                        .WithMany("IdLivros")
-                        .HasForeignKey("UsuarioModelId");
-                });
-
-            modelBuilder.Entity("Biblioteca.Models.UsuarioModel", b =>
-                {
-                    b.Navigation("IdLivros");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,37 @@
+﻿@model LivrosPorUsuarioModel
+@{
+    ViewData["Title"] = "Criar livro";
+}
+
+<div class="text-center">
+
+    <form asp-controller="LivrosPorUsuario" asp-action="Criar" method="post">
+
+        <div class="form-group m-1">
+            <label for="nome">Nome do Livro</label>
+            <input asp-for="LivroNome" class="form-control" rows="1" placeholder="Digite o nome do Livro"></input>
+            @Html.ValidationMessageFor(x => x.LivroNome)
+        </div>
+        <div class="form-group m-1">
+            <label for="descicao">Id do Livro</label>
+            <textarea asp-for="LivroId" class="form-control" rows="3" placeholder="Digite o ID do Livro"></textarea>
+            @Html.ValidationMessageFor(x => x.LivroId)
+        </div>
+        <div class="form-group">
+            <label for="data" class="m-3">Nome do Usuario</label>
+            <textarea asp-for="UsuarioNome" class="form-control" rows="3" placeholder="Digite o nome do Usuario"></textarea>
+            @Html.ValidationMessageFor(x => x.UsuarioNome)
+        </div>
+        <div class="form-group m-1">
+            <label for="descicao">Id do Usuário</label>
+            <textarea asp-for="UsuarioId" class="form-control" rows="3" placeholder="Digite o Id do Usuario"></textarea>
+            @Html.ValidationMessageFor(x => x.UsuarioId)
+        </div>
+
+        <button type="submit" class="btn btn-primary m-1">Alugar</button>
+        <a class="btn btn-secondary m-1" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
+
+    </form>
+
+
+</div>
